@@ -25,7 +25,14 @@ const buttonVariants = {
     },
     contained:{
       backgroundColor: 'green',
-      color:'white'
+      color:'white',
+      fontSize:15
+    },
+    socialContained:{
+      backgroundColor: 'white',
+      color:'gray',
+      borderColor:'gray',
+      fontSize:15
     }
   }
   

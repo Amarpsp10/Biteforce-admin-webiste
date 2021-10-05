@@ -2,7 +2,10 @@ import React, { useState } from 'react'
 import classes from './Auth.module.css'
 import theme from '../../theme'
 import TextInput from '../../components/input/TextInput'
-import {ButtonContained} from '../../components/buttons/Button'
+import {ButtonContained, ButtonSocial} from '../../components/buttons/Button'
+
+import GoogleIcon from '../../assets/icons/google-icon.svg'
+
 const SignUp = () => {
     const[email , setEmail] = useState('')
     const[password, setPassword] = useState('')
@@ -40,6 +43,7 @@ const SignUp = () => {
                         type='password'
                     />
                     <ButtonContained>Sign Up</ButtonContained>
+                    <ButtonSocial ><img  src={GoogleIcon} alt='google-icon'/>Sign Up With Google</ButtonSocial>
                     <text style={{color:theme.colors.gray,textAlign:'center',marginTop:20}}>Already have an account? <span style={{color:theme.colors.blue,cursor:'pointer'}}>Login</span></text>
                 </div>
             </div>

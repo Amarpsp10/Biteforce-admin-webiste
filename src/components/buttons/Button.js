@@ -25,4 +25,16 @@ const ButtonContained = (props) =>{
             </button>
 }
 
-export { ButtonOutlined, ButtonContained}
+const ButtonSocial = (props) =>{
+    return <button
+                style={theme.buttonVariants.socialContained}
+                className={`${classes.button} ${classes.socialButton}`} 
+                type={props.type ? props.type : 'button'} 
+                onClick={!isMobile ? props.onClick : null} 
+                onTouchStart={isMobile ? props.onClick : null}
+                disabled={props.disabled}>
+                    {props.children}
+            </button>
+}
+
+export { ButtonOutlined, ButtonContained, ButtonSocial}

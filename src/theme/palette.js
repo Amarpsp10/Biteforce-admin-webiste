@@ -5,6 +5,7 @@ const palette = {
     white: '#FFFFFF',
     darkSilver:'#616161',
     darkGreen : '#4A5568',
+    grayBlue : '#2D3748'
   }
   
   const colors = {
@@ -14,6 +15,7 @@ const palette = {
     gray : palette.darkSilver,
     text : palette.darkGreen,
     white : palette.white,
+    grayBlue: palette.grayBlue
   }
   
   export default colors
