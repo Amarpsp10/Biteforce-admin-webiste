@@ -1,0 +1,38 @@
+.authPage {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.leftSide {
+  width: 50%;
+  height: 102vh;
+  background-image: url("../../assets/images/device-image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.RightSide {
+  background-color: white;
+  height: 102vh;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline: 23%;
+}
+@media screen and (max-width: 768px) {
+  .leftSide {
+    width: 0%;
+  }
+  .RightSide {
+    width: 100%;
+  }
+  .formContainer {
+    padding-inline: 10%;
+  }
+}

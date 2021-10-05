@@ -1,9 +1,11 @@
 import React from 'react'
-import {LandingPage} from './pages'
+import {LandingPage, LoginPage, SignUpPage} from './pages'
 const App = () => {
   return (
     <div>
-     <LandingPage/> 
+     <LandingPage/>
+     <LoginPage/> 
+     <SignUpPage/>
     </div>
   );
 }

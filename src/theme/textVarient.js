@@ -28,6 +28,14 @@ const textVariants = {
       fontSize: 22,
       color: 'text',
       fontWeight:800
+    },
+    label:{
+      fontSize:19,
+      color:'gray',
+    },
+    input:{
+      color: 'darkBlue',
+      fontSize:15
     }
   }
   

@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.inputTitle {
+  margin-block: 5px;
+}
+.input {
+  margin-bottom: 10px;
+  border: 2px solid #e8e8e8;
+  outline: none;
+  padding: 12px;
+  border-radius: 5px;
+}

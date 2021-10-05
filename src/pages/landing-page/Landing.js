@@ -10,7 +10,7 @@ const Landing = () => {
     return (
         <div className={classes.landingpage}>
             <div className={classes.bgImage}>
-                <img src={BgImage} alt='bg-image'/>
+                <img src={BgImage} alt='background-svg'/>
             </div>
             <div className={classes.header}>
                 <text style={theme.textVariants.boldBody}>BiteForce</text>
