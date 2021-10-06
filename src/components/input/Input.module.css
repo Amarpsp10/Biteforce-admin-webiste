@@ -12,3 +12,11 @@
   padding: 12px;
   border-radius: 5px;
 }
+.dateInput {
+  margin-bottom: 10px;
+  border: 2px solid #e8e8e8;
+  outline: none;
+  padding: 12px;
+  border-radius: 5px;
+  color: #0b0736;
+}
