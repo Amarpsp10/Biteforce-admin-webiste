@@ -2,7 +2,7 @@ import classes from './Loader.module.css'
 
 const Loader = (props) =>{
     return(
-        <div style={{borderLeftColor:'black'}} className={classes.loader}></div>
+        <div style={{borderLeftColor:'white'}} className={classes.loader}></div>
     )
 }
 

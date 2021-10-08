@@ -3,12 +3,13 @@ import classes from './Auth.module.css'
 import theme from '../../theme'
 import TextInput from '../../components/input/TextInput'
 import {ButtonContained, ButtonSocial} from '../../components/buttons/Button'
-
+import FormError from '../../components/Errors/FormError'
 import GoogleIcon from '../../assets/icons/google-icon.svg'
 
 const Login = () => {
     const[email , setEmail] = useState('')
     const[password, setPassword] = useState('')
+    const [error, setError] = useState('');
 
     return (
         <div className={classes.authPage}>
@@ -33,6 +34,7 @@ const Login = () => {
                         onChange={(text)=>setPassword(text)}
                         type='password'
                     />
+                    <FormError message={error}/>
                     <text style={{color:theme.colors.blue,cursor:'pointer',textAlign:'right',marginBottom:10}}>Forget Password?</text>
                     <ButtonContained>Log In</ButtonContained>
                     <ButtonSocial ><img  src={GoogleIcon} alt='google-icon'/>Log In With Google</ButtonSocial>

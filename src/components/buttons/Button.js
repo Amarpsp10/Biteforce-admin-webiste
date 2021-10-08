@@ -1,6 +1,7 @@
 import classes from './Button.module.css'
 import { isMobile } from "react-device-detect";
 import theme from '../../theme'
+import Loader from '../loader/Loader'
 const ButtonOutlined = (props) => {
     return <button
                 style={theme.buttonVariants.outline}
@@ -21,7 +22,11 @@ const ButtonContained = (props) =>{
                 onClick={!isMobile ? props.onClick : null} 
                 onTouchStart={isMobile ? props.onClick : null}
                 disabled={props.disabled}>
-                    {props.children}
+                     {props.loading?
+                 <Loader/>:
+                 <>
+                 {props.children}
+                 </>}
             </button>
 }
 
