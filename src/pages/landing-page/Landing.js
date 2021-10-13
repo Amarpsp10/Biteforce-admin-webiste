@@ -2,11 +2,12 @@ import React from 'react'
 import classes from './Landing.module.css'
 import theme from '../../theme'
 import {ButtonOutlined, ButtonContained} from '../../components/buttons/Button'
-
+import {useHistory} from 'react-router-dom'
 import BgImage from '../../assets/svgs/bg-image-landing.svg'
 import ForDotIcon from '../../assets/icons/four-dot.svg'
 
 const Landing = () => {
+    const history = useHistory()
     return (
         <div className={classes.landingpage}>
             <div className={classes.bgImage}>
@@ -19,7 +20,7 @@ const Landing = () => {
             <section className={classes.introSection}>
                 <text style={theme.textVariants.title}>Welcome to Bite Force Admin</text>
                 <text className={classes.middleSpacing} style={theme.textVariants.header}>Register  your account to get access of biteforce Admin</text>
-                <ButtonContained>Get Started</ButtonContained>
+                <ButtonContained onClick={()=>history.push('/login')} >Get Started</ButtonContained>
             </section>
         </div>
     )

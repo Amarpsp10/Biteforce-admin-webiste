@@ -5,8 +5,10 @@ import TextInput from '../../components/input/TextInput'
 import {ButtonContained, ButtonSocial} from '../../components/buttons/Button'
 import FormError from '../../components/Errors/FormError'
 import GoogleIcon from '../../assets/icons/google-icon.svg'
+import {useHistory} from 'react-router-dom'
 
 const Login = () => {
+    const history = useHistory()
     const[email , setEmail] = useState('')
     const[password, setPassword] = useState('')
     const [error, setError] = useState('');
@@ -35,10 +37,10 @@ const Login = () => {
                         type='password'
                     />
                     <FormError message={error}/>
-                    <text style={{color:theme.colors.blue,cursor:'pointer',textAlign:'right',marginBottom:10}}>Forget Password?</text>
+                    <text onClick={()=>history.push('/forget-password')} style={{color:theme.colors.blue,cursor:'pointer',textAlign:'right',marginBottom:10}}>Forget Password?</text>
                     <ButtonContained>Log In</ButtonContained>
                     <ButtonSocial ><img  src={GoogleIcon} alt='google-icon'/>Log In With Google</ButtonSocial>
-                    <text style={{color:theme.colors.gray,textAlign:'center',marginTop:20}}>Dont have an account? <span style={{color:theme.colors.blue,cursor:'pointer'}}>Create Account</span></text>
+                    <text style={{color:theme.colors.gray,textAlign:'center',marginTop:20}}>Dont have an account? <span style={{color:theme.colors.blue,cursor:'pointer'}} onClick={()=>history.push('/signup')}>Create Account</span></text>
                 </div>
             </div>
         </div>
