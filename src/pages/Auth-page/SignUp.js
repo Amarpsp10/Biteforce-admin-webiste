@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import classes from './Auth.module.css'
 import theme from '../../theme'
-import TextInput from '../../components/input/TextInput'
-import {ButtonContained, ButtonSocial} from '../../components/buttons/Button'
+import {FormError, ButtonContained, ButtonSocial, TextInput} from './../../components'
+
 import {useHistory} from 'react-router-dom'
 
 import GoogleIcon from '../../assets/icons/google-icon.svg'

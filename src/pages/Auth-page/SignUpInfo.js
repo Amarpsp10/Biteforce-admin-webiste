@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
 import classes from './Auth.module.css'
 import theme from '../../theme'
-import TextInput from '../../components/input/TextInput'
-import DateInput from '../../components/input/DateInput'
-import {ButtonContained,} from '../../components/buttons/Button'
-import RadioInput from '../../components/input/RadioInput'
+import {FormError, ButtonContained, TextInput, DateInput, RadioInput} from './../../components'
 
 const SignUpInfo = () => {
     const[name , setName] = useState('')

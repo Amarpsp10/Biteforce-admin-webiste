@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import classes from './Auth.module.css'
 import theme from '../../theme'
 import TextInput from '../../components/input/TextInput'
-import {ButtonContained, ButtonSocial} from '../../components/buttons/Button'
+import {ButtonContained} from '../../components/buttons/Button'
 import {useHistory} from 'react-router-dom'
 
 const ForgetPassword = () => {
