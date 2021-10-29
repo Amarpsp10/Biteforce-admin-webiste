@@ -1,1 +1,1 @@
-export {auth, db, googleAuthProvider, storage} from './firebase.config'
+export {authentication, db, googleAuthProvider, storageDb} from './firebase.config'

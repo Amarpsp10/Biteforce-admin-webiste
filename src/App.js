@@ -1,9 +1,10 @@
 import React from 'react'
-import {Router, Switch, Route} from 'react-router-dom'
-import {LandingPage, LoginPage, SignUpPage, SignUpInfoPage,ForgetPaswordPage,Home,DeviceRegister,InstitutionRegister} from './pages'
+import {Route} from 'react-router-dom'
+import { AuthProvider } from './contexts'
+import {LandingPage, LoginPage, SignUpPage, SignUpInfoPage,ForgetPaswordPage, Message ,Home,DeviceRegister,InstitutionRegister} from './pages'
 const App = () => {
   return (
-    <>
+    <AuthProvider>
       <Route path='/home' component={Home}/>
       <Route path='/register-device' component={InstitutionRegister} exact/>
       <Route path='/register-institution' component={DeviceRegister} exact/>
@@ -12,7 +13,8 @@ const App = () => {
       <Route path='/signup' component={SignUpPage} exact/>
       <Route path='/signup/complete-profile' component={SignUpInfoPage} exact/>
       <Route path='/forget-password' component={ForgetPaswordPage} exact/>
-    </>
+      <Route path='/message' component={Message} exact/>
+    </AuthProvider>
   );
 }
 

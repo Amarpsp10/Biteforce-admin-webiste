@@ -1,5 +1,7 @@
-import firebase from 'firebase'
-
+import {initializeApp} from 'firebase/app'
+import {getFirestore} from 'firebase/firestore/lite'
+import {getStorage} from 'firebase/storage'
+import {getAuth, GoogleAuthProvider} from 'firebase/auth'
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -11,12 +13,12 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_MEASUREMENTID
   };
 
-  const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-  const auth = firebase.auth();
-  const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
-  const storage = firebase.storage();
+  const app = initializeApp(firebaseConfig)
+  const db = getFirestore(app)
+  const authentication = getAuth(app)
+  const googleAuthProvider = new GoogleAuthProvider()
+  const storageDb = getStorage(app)
 
-export { auth, db, storage, googleAuthProvider }
+export { authentication, db, storageDb, googleAuthProvider }
 
 export default app;
