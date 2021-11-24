@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import classes from './Auth.module.css'
 import theme from '../../theme'
 import {FormError, ButtonContained, TextInput, DateInput, RadioInput} from './../../components'
+import { AuthContext } from '../../contexts'
+import {Redirect} from 'react-router-dom'
 
 const SignUpInfo = () => {
+    const {user} = useContext(AuthContext)
     const[name , setName] = useState('')
     const[phone, setPhone] = useState('')
     const [startDate, setStartDate] = useState(new Date());
     const[gender, setGender] = useState();
-
+    
     return (
         <div className={classes.authPage}>
+            {user? <Redirect to='/home'/> : null}
             <div className={classes.leftSide}>
             </div>
             <div className={classes.RightSide}>

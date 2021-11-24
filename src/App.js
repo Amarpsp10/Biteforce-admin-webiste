@@ -1,10 +1,12 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
+import {Route, useLocation, Redirect} from 'react-router-dom'
 import { AuthProvider } from './contexts'
 import {LandingPage, LoginPage, SignUpPage, SignUpInfoPage,ForgetPaswordPage, Message ,Home,DeviceRegister,InstitutionRegister} from './pages'
 const App = () => {
+  const currLink = useLocation().pathname
   return (
     <AuthProvider>
+      {currLink==='/'? <Redirect to='/welcome'/> :null}
       <Route path='/home' component={Home}/>
       <Route path='/register-device' component={InstitutionRegister} exact/>
       <Route path='/register-institution' component={DeviceRegister} exact/>

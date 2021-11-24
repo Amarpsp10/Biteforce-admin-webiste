@@ -1,6 +1,6 @@
 import React,{useContext, useState, useEffect} from 'react'
 import {authentication, googleAuthProvider} from '../config'
-const AuthContext = React.createContext()
+export const AuthContext = React.createContext()
 
 export function useAuth(){
     return useContext(AuthContext)
@@ -8,7 +8,7 @@ export function useAuth(){
 
 export function AuthProvider({children}) {
     const[loading,setLoading] = useState(true)
-    const [currentUser,setCurrentUser] = useState();
+    const [user,setCurrentUser] = useState();
     
     function signup(email, password){
         return authentication.createUserWithEmailAndPassword(email,password)
@@ -31,7 +31,7 @@ export function AuthProvider({children}) {
     },[])
     
     const value = {
-        currentUser,
+        user,
         signup,
         login,
         logout,

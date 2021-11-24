@@ -1,16 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import classes from './Auth.module.css'
 import theme from '../../theme'
 import TextInput from '../../components/input/TextInput'
 import {ButtonContained} from '../../components/buttons/Button'
-import {useHistory} from 'react-router-dom'
-
+import {useHistory, Redirect} from 'react-router-dom'
+import { AuthContext } from '../../contexts'
 const ForgetPassword = () => {
+    const {user} = useContext(AuthContext)
     const history = useHistory()
     const[email , setEmail] = useState('')
-
+    
     return (
         <div className={classes.authPage}>
+            {user? <Redirect to='/home'/> : null}
             <div className={classes.leftSide}>
             </div>
             <div className={classes.RightSide}>

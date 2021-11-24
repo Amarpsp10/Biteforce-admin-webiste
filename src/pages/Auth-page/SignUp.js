@@ -1,20 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState, useContext} from 'react'
 import classes from './Auth.module.css'
 import theme from '../../theme'
 import {FormError, ButtonContained, ButtonSocial, TextInput} from './../../components'
-
-import {useHistory} from 'react-router-dom'
+import { AuthContext } from '../../contexts'
+import {useHistory, Redirect} from 'react-router-dom'
 
 import GoogleIcon from '../../assets/icons/google-icon.svg'
 
 const SignUp = () => {
+    const {user} = useContext(AuthContext)
     const history = useHistory()
     const[email , setEmail] = useState('')
     const[password, setPassword] = useState('')
     const[cpassword, setCpassword] = useState('')
-
+    
     return (
         <div className={classes.authPage}>
+            {user? <Redirect to='/home'/> : null}
             <div className={classes.leftSide}>
             </div>
             <div className={classes.RightSide}>
