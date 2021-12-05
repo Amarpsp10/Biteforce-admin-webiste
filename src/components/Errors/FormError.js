@@ -1,4 +1,3 @@
-import theme from '../../theme'
 import classes from './Error.module.css'
 import ErrorIcon from './../../assets/icons/error-icon.svg'
 

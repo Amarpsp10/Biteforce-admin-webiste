@@ -1,5 +1,4 @@
 import React from 'react'
-import theme from '../../theme'
 import classes from './Notification.module.css'
 
 const NotificationPage = () => {

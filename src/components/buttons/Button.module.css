@@ -25,6 +25,7 @@
   min-width: 200px;
   border-radius: 5px;
   opacity: 0.8;
+  width: 100%;
 }
 .socialButton {
   font-weight: 800;

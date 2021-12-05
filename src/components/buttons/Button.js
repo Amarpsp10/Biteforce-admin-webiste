@@ -14,18 +14,18 @@ const ButtonOutlined = (props) => {
             </button>
 }
 
-const ButtonContained = (props) =>{
+const ButtonContained = ({type, onClick, disabled, loading, children}) =>{
     return <button
                 style={theme.buttonVariants.contained}
                 className={`${classes.button} ${classes.containedButton}`} 
-                type={props.type ? props.type : 'button'} 
-                onClick={!isMobile ? props.onClick : null} 
-                onTouchStart={isMobile ? props.onClick : null}
-                disabled={props.disabled}>
-                     {props.loading?
+                type={type ? type : 'button'} 
+                onClick={!type? !isMobile ? onClick : null : null} 
+                onTouchStart={!type? isMobile ? onClick : null : null}
+                disabled={disabled}>
+                     {loading?
                  <Loader/>:
                  <>
-                 {props.children}
+                 {children}
                  </>}
             </button>
 }

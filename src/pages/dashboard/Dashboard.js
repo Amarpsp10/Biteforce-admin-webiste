@@ -1,5 +1,5 @@
 import React from 'react'
-import { ButtonContained, ButtonOutlined } from '../../components'
+import { ButtonOutlined } from '../../components'
 import theme from '../../theme'
 import classes from './Dashboard.module.css'
 import {useHistory} from 'react-router-dom'

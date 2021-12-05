@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classes from './Auth.module.css'
 import theme from '../../theme'
 import {ButtonContained} from './../../components'
