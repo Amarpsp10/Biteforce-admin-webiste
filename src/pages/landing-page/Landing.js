@@ -20,7 +20,9 @@ const Landing = () => {
             <section className={classes.introSection}>
                 <text style={theme.textVariants.title}>Welcome to Bite Force Admin</text>
                 <text className={classes.middleSpacing} style={theme.textVariants.header}>Register  your account to get access of biteforce Admin</text>
-                <ButtonContained onClick={()=>history.push('/login')} >Get Started</ButtonContained>
+                <div>
+                    <ButtonContained width={40} onClick={()=>history.push('/login')} >Get Started</ButtonContained>
+                </div>
             </section>
         </div>
     )

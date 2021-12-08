@@ -2,6 +2,7 @@ import React,{useContext, useState, useEffect} from 'react'
 import { authentication, googleAuthProvider } from '../config'
 import { signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, sendPasswordResetEmail} from '@firebase/auth'
 
+import { getStaff } from '../api'
 export const AuthContext = React.createContext()
 
 export function useAuth(){
@@ -11,7 +12,8 @@ export function useAuth(){
 export function AuthProvider({children}) {
     const[loading,setLoading] = useState(true)
     const [user,setCurrentUser] = useState(null);
-    
+    const [userDetail, setUserDetail] = useState(false)
+
     function signup(email, password){
         return createUserWithEmailAndPassword(authentication,email,password)
     }
@@ -30,15 +32,29 @@ export function AuthProvider({children}) {
 
     useEffect(()=>{
        const unsubscribe = authentication.onAuthStateChanged(user =>{
-           setCurrentUser(user)
+           if(user){
+               setCurrentUser(user)
+               GetStaff(user.uid)
+            }
+            else{
+                setUserDetail(null)
+                setCurrentUser(null)
+            }
            setLoading(false)   
        })
        return unsubscribe
     },[])
+
+    const GetStaff = async(uid) =>{
+        const staff = await getStaff(uid)
+        return setUserDetail(staff)
+    }
     
     const value = {
         user,
+        userDetail,
         setCurrentUser,
+        setUserDetail,
         signup,
         login,
         logout,

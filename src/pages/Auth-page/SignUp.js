@@ -28,7 +28,9 @@ const SignUp = () => {
         setLoading(true)
         try{
             const result = await signup(email, password)
-            console.log(result)
+            if(result?.user){
+                history.push('/signup/complete-profile')
+            }
         }catch(e){
             setError('Email already exist!')
             return setLoading(false)
@@ -38,8 +40,10 @@ const SignUp = () => {
 
     const handleGoogleLogin = async() =>{
         try{
-            const result = await loginWithGoogle();
-            console.log(result);
+            const result = await loginWithGoogle()
+            if(result?.user){
+                history.push('/signup/complete-profile')
+            }
         }catch(err){
             console.log(err)
         }
@@ -53,7 +57,7 @@ const SignUp = () => {
             <div className={classes.RightSide}>
                 <div className={classes.formContainer}>
                     <form onSubmit={(e)=>handleSignup(e)}>
-                        <text style={theme.textVariants.header}>Welcome to Biteforce Admin</text>
+                        <text style={theme.textVariants.header}>Welcome to Biteforce Admin</text><br/>
                         <text style={theme.textVariants.title}>Register</text>
                         <TextInput 
                             title='Email' 

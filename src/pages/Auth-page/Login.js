@@ -30,7 +30,9 @@ const Login = () => {
         setLoading(true)
         try{
             const result = await login(email,password)
-            console.log(result)
+            if(result?.user){
+                history.push('/signup/complete-profile')
+            }
         }catch(err){
             setError('Invalid Email and Password')
             return setLoading(false)
@@ -41,7 +43,9 @@ const Login = () => {
     const handleGoogleLogin = async() =>{
         try{
             const result = await loginWithGoogle();
-            console.log(result);
+            if(result?.user){
+                history.push('/signup/complete-profile')
+            }
         }catch(err){
             console.log(err)
         }
