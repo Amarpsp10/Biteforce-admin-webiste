@@ -1,0 +1,39 @@
+.profileMenu{
+    width: 150px;
+    right: 20px;
+    background-color: white;
+    box-shadow: 1px 1px 8px 0px rgba(0,0,0,0.3);
+    position: absolute;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 130px;
+    padding-block: 5px;
+}
+.show{
+    display: block;
+}
+.hide{
+    display: none;
+}
+.menuButton{
+    background-color: white;
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 15px;
+    text-align: left;
+    color: #0B0736;
+    transition: all 0.2s;
+    padding-block: 8px;
+    padding-inline: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.menuButton:hover{
+    background-color: rgba(0,0,0,0.03);
+}
+.menuButton:active{
+    background-color: rgba(0,0,0,0.1);
+}
