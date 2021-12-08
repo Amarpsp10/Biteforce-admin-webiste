@@ -1,5 +1,5 @@
 import {initializeApp} from 'firebase/app'
-import {getFirestore} from 'firebase/firestore/lite'
+import {getFirestore} from 'firebase/firestore'
 import {getStorage} from 'firebase/storage'
 import {getAuth, GoogleAuthProvider} from 'firebase/auth'
 
@@ -21,5 +21,3 @@ const firebaseConfig = {
   const storageDb = getStorage(app)
 
 export { authentication, db, storageDb, googleAuthProvider }
-
-export default app;
