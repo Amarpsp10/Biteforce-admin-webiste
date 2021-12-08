@@ -7,7 +7,7 @@ const FormError = ({message}) =>{
         {message ?
             <div className={classes.formErrorContainer}>
                 <img src={ErrorIcon} alt='error-icon'/>
-                <text style={{color:'black',fontSize:13}}>{message}</text>
+                <text style={{fontSize:13,marginLeft:5}}>{message}</text>
             </div>
             :null
             }
