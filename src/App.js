@@ -10,8 +10,8 @@ const App = () => {
       <Switch>
         {currLink==='/'? <Redirect to='/welcome'/> :null}
         <Route path='/home' component={Home}/>
-        <Route path='/register-device' component={InstitutionRegister} exact/>
-        <Route path='/register-institution' component={DeviceRegister} exact/>
+        <Route path='/register-device' component={DeviceRegister} exact/>
+        <Route path='/register-institution' component={InstitutionRegister} exact/>
         <Route path='/welcome' component={LandingPage} exact/>
         <Route path='/login' component={LoginPage} exact/>
         <Route path='/signup' component={SignUpPage} exact/>
