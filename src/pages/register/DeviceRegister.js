@@ -5,6 +5,7 @@ import { TextInput, ButtonContained, FormError } from '../../components'
 import { getAllInstitutions, registerDevice } from '../../api'
 import { AuthContext } from '../../contexts'
 import { useHistory } from 'react-router-dom'
+import { serverTimestamp } from 'firebase/firestore'
 
 export default function InstituteRegister() {
     const { user } = useContext(AuthContext)
@@ -31,7 +32,7 @@ export default function InstituteRegister() {
             return setError('All fields are required !')
         }
         setLoading(true)
-        const register = await registerDevice({device_id: deviceId, institution_name: institution, registered_by: user.uid})
+        const register = await registerDevice({device_id: deviceId, institution_name: institution, registered_by: user.uid, last_updated: serverTimestamp()})
         if(register===undefined){
             console.log('successfully registered')
             history.push('/home/dashboard')

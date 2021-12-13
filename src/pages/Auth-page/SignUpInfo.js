@@ -7,6 +7,8 @@ import { ButtonContained, TextInput, DateInput, FormError } from './../../compon
 import { AuthContext } from '../../contexts'
 import {Redirect} from 'react-router-dom'
 import { saveProfile } from '../../api'
+import { serverTimestamp } from 'firebase/firestore'
+
 const SignUpInfo = () => {
     const {user, userDetail, setUserDetail} = useContext(AuthContext)
     const[name , setName] = useState('')
@@ -26,7 +28,7 @@ const SignUpInfo = () => {
             return setError('Phone number should be 10 digit number !')
         }
         setLoading(true)
-        const profile =  {name:name, phone: phone, dob: startDate, id: user.uid, email: user.email}
+        const profile =  {name:name, phone: phone, dob: startDate, id: user.uid, email: user.email, created_at: serverTimestamp()}
         const save = await saveProfile(user.uid, profile)
         if(save===undefined){
             setUserDetail(profile)

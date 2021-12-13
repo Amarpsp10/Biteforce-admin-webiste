@@ -1,5 +1,5 @@
 import { db } from "../config"
-import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, setDoc, serverTimestamp, addDoc } from 'firebase/firestore'
 
 export const getStaff = async (uid) =>{
     const staff = await getDoc(doc(db,'staff',uid))
@@ -21,11 +21,13 @@ export const checkInstitution = async(institution) =>{
 
 export const registerInstitute = async(institute)=>{
     const result = await setDoc(doc(db,'institutions',institute.name),institute)
+    await addDoc(doc(db, `staff/${institute.registered_by}/activity`),{registered:'institute',timestamp:serverTimestamp(), institution_name: institute.name})
     return result
 }
 
 export const registerDevice = async(device) =>{
     const result = await setDoc(doc(db,'devices', device.device_id), device)
+    await addDoc(doc(db, `staff/${device.registered_by}/activity`),{registered:'device',timestamp:serverTimestamp(), device_id: device.device_id})
     return result
 }
 

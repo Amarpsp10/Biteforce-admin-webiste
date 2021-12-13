@@ -5,6 +5,7 @@ import { TextInput, ButtonContained, SelectInput } from '../../components'
 import { checkInstitution, registerInstitute, allCities } from '../../api'
 import { AuthContext } from '../../contexts'
 import { useHistory } from 'react-router-dom'
+import { serverTimestamp } from 'firebase/firestore'
 
 export default function DeviceRegister() {
     const { user } = useContext(AuthContext)
@@ -43,7 +44,7 @@ export default function DeviceRegister() {
             setLoading(false)
             return setError('Institution with this name already exist !')
         }
-        const register = await registerInstitute({name:institution,address:address,city:city,registered_by:user.uid})
+        const register = await registerInstitute({name:institution,address:address,city:city,registered_by:user.uid, created_at: serverTimestamp()})
         if(register===undefined){
             console.log('successfully registered')
             history.push('/home/dashboard')

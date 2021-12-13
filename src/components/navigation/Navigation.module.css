@@ -1,5 +1,4 @@
 .bottomNavigator {
-  height: 65px;
   background-color: #220646;
   position: absolute;
   left: 0;
@@ -15,8 +14,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #d9f4ff;
   margin-inline: 2rem;
   cursor: pointer;
   text-decoration-line: none;
+  padding-block: 10px;
+  border-top: solid 3px transparent;
+}
+.activeTab{
+  border-top: solid 3px yellow;
+  color: white;
 }
