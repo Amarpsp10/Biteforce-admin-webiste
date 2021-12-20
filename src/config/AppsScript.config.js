@@ -1,0 +1,1 @@
+export const Script_Url = process.env.REACT_APP_SCRIPT_URL

@@ -1,5 +1,6 @@
 import { db } from "../config"
 import { collection, doc, getDoc, getDocs, setDoc, serverTimestamp, addDoc } from 'firebase/firestore'
+import { Script_Url } from '../config'
 
 export const getStaff = async (uid) =>{
     const staff = await getDoc(doc(db,'staff',uid))
@@ -21,13 +22,27 @@ export const checkInstitution = async(institution) =>{
 
 export const registerInstitute = async(institute)=>{
     const result = await setDoc(doc(db,'institutions',institute.name),institute)
-    await addDoc(doc(db, `staff/${institute.registered_by}/activity`),{registered:'institute',timestamp:serverTimestamp(), institution_name: institute.name})
-    return result
+}
+
+export const createSpreadSheet = async(institute_name)=>{
+    var formData = new FormData()
+    formData.append('action','createSpreadSheet')
+    formData.append('institute_name',institute_name)
+    const result = await fetch(`${Script_Url}`,{
+        method:'POST',
+        body:formData
+    }).then(response=>{
+        return response
+    }).catch((e)=>{
+        return e.response
+    })
+    const string = await result.text()
+    const data = JSON.parse(string)
+    return data
 }
 
 export const registerDevice = async(device) =>{
     const result = await setDoc(doc(db,'devices', device.device_id), device)
-    await addDoc(doc(db, `staff/${device.registered_by}/activity`),{registered:'device',timestamp:serverTimestamp(), device_id: device.device_id})
     return result
 }
 

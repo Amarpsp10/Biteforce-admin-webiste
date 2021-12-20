@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { isMobile } from 'react-device-detect'
 import {FormError, RegisterHeader} from '../../components'
 import { TextInput, ButtonContained, SelectInput } from '../../components'
-import { checkInstitution, registerInstitute, allCities } from '../../api'
+import { checkInstitution, registerInstitute, allCities, createSpreadSheet } from '../../api'
 import { AuthContext } from '../../contexts'
 import { useHistory } from 'react-router-dom'
 import { serverTimestamp } from 'firebase/firestore'
@@ -43,8 +43,14 @@ export default function DeviceRegister() {
         if(await checkInstitution(institution)){
             setLoading(false)
             return setError('Institution with this name already exist !')
+        }    
+        const result = await createSpreadSheet(institution)
+        if(!result || result.status!=='ok' || !result.spreadSheetId){
+            setLoading(false)
+            return setError('Something went wrong!')
         }
-        const register = await registerInstitute({name:institution,address:address,city:city,registered_by:user.uid, created_at: serverTimestamp()})
+
+        const register = await registerInstitute({name:institution,address:address,city:city.value,registered_by:user.uid, created_at: serverTimestamp(),spreadSheetId:result.spreadSheetId})
         if(register===undefined){
             console.log('successfully registered')
             history.push('/home/dashboard')
