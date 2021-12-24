@@ -19,9 +19,6 @@ const App = () => {
           <Route path='/signup/complete-profile' component={SignUpInfoPage} exact/>
           <Route path='/forget-password' component={ForgetPaswordPage} exact/>
           <Route path='/message' component={Message} exact/>
-          <PrivateRoute path='/jatt' exact>
-            <div>jatt</div>
-          </PrivateRoute>
         </Switch>
       </ActivityProvider>
     </AuthProvider>

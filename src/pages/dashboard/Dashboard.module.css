@@ -9,7 +9,11 @@
   flex-direction: row;
   justify-content: space-evenly;
 }
-
+.dashboardItems{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 @media (max-width: 768px) {
   .Dashboard {
     padding-inline: 5%;

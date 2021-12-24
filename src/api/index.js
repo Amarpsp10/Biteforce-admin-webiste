@@ -1,5 +1,5 @@
 import { db } from "../config"
-import { collection, doc, getDoc, getDocs, setDoc, serverTimestamp, addDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, setDoc, serverTimestamp, addDoc, where, query } from 'firebase/firestore'
 import { Script_Url } from '../config'
 
 export const getStaff = async (uid) =>{
@@ -54,4 +54,12 @@ export const getAllInstitutions = async() =>{
 export const allCities = async() =>{
     const result = await getDoc(doc(db,'data','cities'))
     return result.data()
+}
+
+export const allRegisteredInstitute = async(user) =>{
+    // const docsRef = collection(db,'institutions')
+    // const queryRef = query(docsRef, where('registered_by','==',user))
+    // const result = await getDocs(queryRef)
+    const result = await getDocs(collection(db,'institutions'))
+    return result
 }
