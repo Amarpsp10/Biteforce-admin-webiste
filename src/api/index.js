@@ -1,9 +1,8 @@
 import { db } from "../config"
-import { collection, doc, getDoc, getDocs, setDoc, serverTimestamp, addDoc, where, query } from 'firebase/firestore'
 import { Script_Url } from '../config'
 
 export const getStaff = async (uid) =>{
-    const staff = await getDoc(doc(db,'staff',uid))
+    const staff = await db.collection('staff').doc(uid).get()
     if(staff.exists){
         return staff.data()
     }
@@ -11,17 +10,18 @@ export const getStaff = async (uid) =>{
 }
 
 export const saveProfile = async(uid,profile) =>{
-    const result = await setDoc(doc(db,'staff',uid),profile)
+    const result = await db.collection('staff').doc(uid).set(profile)
     return result
 }
 
 export const checkInstitution = async(institution) =>{
-    const result = await getDoc(doc(db,'institutions',institution))
+    const result = await db.collection('institutions').doc(institution).get()
     return result.exists()
 }
 
 export const registerInstitute = async(institute)=>{
-    const result = await setDoc(doc(db,'institutions',institute.name),institute)
+    const result = await db.collection('institutions').doc(institute.name).set(institute)
+    return result
 }
 
 export const createSpreadSheet = async(institute_name)=>{
@@ -42,24 +42,21 @@ export const createSpreadSheet = async(institute_name)=>{
 }
 
 export const registerDevice = async(device) =>{
-    const result = await setDoc(doc(db,'devices', device.device_id), device)
+    const result = await db.collection('devices').doc(device.device_id).set(device)
     return result
 }
 
 export const getAllInstitutions = async() =>{
-    const result = await getDocs(collection(db,'institutions'))
+    const result = await db.collection('institutions').limit(10).get()
     return result
 }
 
 export const allCities = async() =>{
-    const result = await getDoc(doc(db,'data','cities'))
+    const result = await db.collection('data').doc('cities').get()
     return result.data()
 }
 
 export const allRegisteredInstitute = async(user) =>{
-    // const docsRef = collection(db,'institutions')
-    // const queryRef = query(docsRef, where('registered_by','==',user))
-    // const result = await getDocs(queryRef)
-    const result = await getDocs(collection(db,'institutions'))
+    const result = await db.collection('institutions').where('registered_by','==',user).get()
     return result
 }

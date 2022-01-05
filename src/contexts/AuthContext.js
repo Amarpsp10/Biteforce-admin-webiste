@@ -1,6 +1,6 @@
 import React,{useContext, useState, useEffect} from 'react'
 import { authentication, googleAuthProvider } from '../config'
-import { signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, sendPasswordResetEmail} from '@firebase/auth'
+// import { signInWithEmailAndPassword, signInWithPopup, createUserWithEmailAndPassword, sendPasswordResetEmail} from '@firebase/auth'
 
 import { getStaff } from '../api'
 export const AuthContext = React.createContext()
@@ -15,19 +15,24 @@ export function AuthProvider({children}) {
     const [userDetail, setUserDetail] = useState(false)
 
     function signup(email, password){
-        return createUserWithEmailAndPassword(authentication,email,password)
+        // return createUserWithEmailAndPassword(authentication,email,password)
+        return authentication.createUserWithEmailAndPassword(email,password)
     }
     function login(email, password){
-        return signInWithEmailAndPassword(authentication,email,password)
+        // return signInWithEmailAndPassword(authentication,email,password)
+        return authentication.signInWithEmailAndPassword(email,password)
     }
     function loginWithGoogle(){
-        return signInWithPopup(authentication, googleAuthProvider)
+        // return signInWithPopup(authentication, googleAuthProvider)
+        return authentication.signInWithPopup(googleAuthProvider)
     }
     function logout(){
+        // return authentication.signOut()
         return authentication.signOut()
     }
     function forgetPassword(email){
-        return sendPasswordResetEmail(authentication,email)
+        // return sendPasswordResetEmail(authentication,email)
+        return authentication.sendPasswordResetEmail(email)
     }
 
     useEffect(()=>{
