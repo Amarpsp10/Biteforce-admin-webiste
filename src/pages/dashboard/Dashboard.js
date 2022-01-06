@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { ButtonOutlined } from '../../components'
+import { ButtonOutlined, RegisterMenu, ButtonContained, UpdateMenu } from '../../components'
 import theme from '../../theme'
 import classes from './Dashboard.module.css'
 import {useHistory} from 'react-router-dom'
@@ -9,7 +9,6 @@ export default function Dashboard() {
     const { user } = useContext(AuthContext)
     const history = useHistory()
     const [activities, setActivities] = useState([])
-
     useEffect(()=>{
         getActivities()
     },[])
@@ -25,8 +24,8 @@ export default function Dashboard() {
     return (
         <div className={classes.Dashboard}>
             <div className={classes.buttons}>
-                <ButtonOutlined onClick={()=>history.push('/register-device')}>Register New Device +</ButtonOutlined>
-                <ButtonOutlined onClick={()=>history.push('/register-institution')}>Register New Institute +</ButtonOutlined>
+                <UpdateMenu/>
+                <RegisterMenu/>
             </div>
             <div style={theme.boxVariants.primary}>
                 <div className={classes.boxHeader}>
