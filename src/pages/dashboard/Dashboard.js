@@ -28,25 +28,23 @@ export default function Dashboard() {
                 <RegisterMenu/>
             </div>
             <div style={theme.boxVariants.primary}>
-                <div className={classes.boxHeader}>
-                    <text style={theme.textVariants.body}>Recent Activity</text>
+                <div style={{borderBottom:'solid 2px rgba(0,0,0,0.1)',paddingBottom:15}} className={classes.boxHeader}>
+                    <text className={classes.dashName}>Recent Activity</text>
                 </div>
-                <hr/>
                {activities.length?
                     <>{activities.map((data,index)=>{
                         return(
                             <>
                             <div className={classes.dashboardItems}>
                                 <div style={{display:'flex',flexDirection:'column'}}>
-                                <text>
-                                    <span style={{color:theme.colors.darkBlue,fontWeight:'bold'}}>{data.data.name} </span>
-                                     Successfully registered by you
+                                <text style={{fontSize:14}}>
+                                    <span className={classes.dashName}>{data.data.name} </span>
+                                    Registered by you
                                 </text>
-                                <text>{data.data.city}</text>
+                                <text style={{fontSize:13}}>{data.data.city}</text>
                                 </div>
-                                <text>{new Date(data.data.created_at.toDate()).toLocaleDateString()}</text>
+                                <text style={{fontSize:11,fontWeight:'500',color:'rgba(0,0,0,0.7)'}}>{new Date(data.data.created_at.toDate()).toDateString()}</text>
                             </div>
-                            <hr/>
                             </>
                         )
                     })}
